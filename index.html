@@ -3,27 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paolo Galimberti — Curriculum Vitae</title>
+<title>Paolo Galimberti — CV</title>
 <style>
+  * { box-sizing: border-box; }
   body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
          background:#0f172a; color:#e2e8f0; display:flex; align-items:center; justify-content:center; min-height:100vh; }
-  .card { background:#1e293b; padding:3rem 2.5rem; border-radius:16px; text-align:center;
-          box-shadow:0 20px 50px rgba(0,0,0,.4); max-width:420px; width:85%; }
-  h1 { margin:0 0 .35rem; font-size:1.7rem; letter-spacing:.5px; }
-  p  { margin:.3rem 0 1.8rem; color:#94a3b8; }
-  a.btn { display:inline-block; background:#2563eb; color:#fff; text-decoration:none;
-          padding:.95rem 2.1rem; border-radius:10px; font-weight:600; font-size:1.05rem;
-          transition:background .2s; }
-  a.btn:hover { background:#1d4ed8; }
-  footer { margin-top:2rem; font-size:.78rem; color:#64748b; }
+  .card { background:#1e293b; padding:2.6rem 2.2rem; border-radius:18px; text-align:center;
+          box-shadow:0 20px 50px rgba(0,0,0,.45); max-width:430px; width:88%; }
+  h1 { margin:0 0 .4rem; font-size:1.65rem; letter-spacing:.5px; }
+  .sub { margin:0 0 2rem; color:#94a3b8; font-size:.98rem; }
+  .btn { position:relative; display:flex; align-items:center; justify-content:center; gap:.7rem;
+         width:100%; padding:1.05rem 1.2rem; border-radius:12px; text-decoration:none;
+         font-weight:600; font-size:1.12rem; margin-bottom:.9rem; transition:transform .15s, box-shadow .15s; }
+  .btn:hover { transform:translateY(-2px); }
+  .it { background:#2563eb; color:#fff; }
+  .it:hover { background:#1d4ed8; box-shadow:0 10px 25px rgba(37,99,235,.35); }
+  .en { background:#334155; color:#e2e8f0; border:1px solid #475569; }
+  .en:hover { background:#3f4d63; box-shadow:0 10px 25px rgba(0,0,0,.3); }
+  .flag { font-size:1.35rem; line-height:1; }
+  .hint::after { content:"consigliato · suggested"; position:absolute; top:-10px; right:12px;
+                 background:#22c55e; color:#052e16; font-size:.62rem; font-weight:700;
+                 padding:.22rem .55rem; border-radius:99px; letter-spacing:.3px; }
+  footer { margin-top:1.6rem; font-size:.75rem; color:#64748b; line-height:1.5; }
 </style>
 </head>
 <body>
   <div class="card">
     <h1>Paolo Galimberti</h1>
-    <p>Curriculum Vitae</p>
-    <a class="btn" href="CV.pdf">📄 Scarica il CV (PDF)</a>
-    <footer>Questo link punta sempre all'ultima versione del CV.</footer>
+    <p class="sub">Curriculum Vitae<br><span lang="en">Choose your language / Scegli la lingua</span></p>
+    <a class="btn it" id="lang-it" href="CV-IT.pdf"><span class="flag">&#127470;&#127481;</span> Italiano</a>
+    <a class="btn en" id="lang-en" href="CV-EN.pdf"><span class="flag">&#127468;&#127463;</span> English</a>
+    <footer>Il link punta sempre all'ultima versione del CV.<br>
+    <span lang="en">This link always points to the latest version of the CV.</span></footer>
   </div>
+  <script>
+    (function () {
+      var lang = (navigator.language || "it").toLowerCase();
+      var id = lang.indexOf("en") === 0 ? "lang-en" : "lang-it";
+      var el = document.getElementById(id);
+      if (el) el.classList.add("hint");
+    })();
+  </script>
 </body>
 </html>
